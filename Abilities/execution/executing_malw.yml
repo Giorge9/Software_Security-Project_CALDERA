@@ -1,0 +1,31 @@
+- name: Execution of trial malware
+  access: {}
+  requirements: []
+  repeatable: false
+  tactic: execution
+  plugin: ''
+  description: Powershell script to execute on targeted host the malware created for
+    educational purposes; it opens a dialog message showing "Sei stato hackerato!".
+  singleton: false
+  executors:
+  - name: psh
+    code: null
+    parsers: []
+    timeout: 60
+    cleanup: []
+    uploads: []
+    language: null
+    platform: windows
+    payloads: []
+    build_target: null
+    command: $exePath = "$HOME\Desktop\malware.exe"; Start-Process -FilePath $exePath
+    variations: []
+    additional_info: {}
+  privilege: ''
+  technique_name: 'User Execution: Malicious File'
+  delete_payload: true
+  technique_id: T1204.002
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  id: 779a719c-10d1-4e4a-acf2-0c891f6fdf81

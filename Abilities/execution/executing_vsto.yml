@@ -1,0 +1,31 @@
+- repeatable: false
+  description: VSTO file execution in order to estabilish persistence in Office application
+  name: Executing VSTO
+  delete_payload: true
+  buckets: []
+  singleton: false
+  privilege: ''
+  additional_info:
+    cleanup: '[]'
+  tactic: execution
+  requirements: []
+  plugin: ''
+  technique_id: T1204.002
+  access: {}
+  technique_name: 'User Execution: Malicious File'
+  executors:
+  - timeout: 60
+    payloads: []
+    variations: []
+    name: psh
+    code: null
+    platform: windows
+    command: "$filePath = Join-Path $env:TEMP \"Platinum_Rocket\\Platinum_Rocket.vsto\"\
+      ; \nStart-Process -FilePath $filePath"
+    build_target: null
+    additional_info: {}
+    language: null
+    uploads: []
+    cleanup: []
+    parsers: []
+  id: 7dbe1c7c-bc44-4002-8892-a141412af81a

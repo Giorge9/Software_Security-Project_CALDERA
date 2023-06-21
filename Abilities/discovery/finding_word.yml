@@ -1,0 +1,32 @@
+- name: Finding Word application
+  description: Powershell code which finds Office Word location and executes the program
+    installed on Windows targeted machine
+  plugin: ''
+  delete_payload: true
+  access: {}
+  technique_id: T1518.001
+  singleton: false
+  privilege: ''
+  executors:
+  - name: psh
+    parsers: []
+    timeout: 60
+    cleanup: []
+    command: $wordPath = (Get-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App
+      Paths\WINWORD.EXE" -Name "(Default)")."(Default)"; Start-Process -FilePath $wordPath
+    code: null
+    additional_info: {}
+    payloads: []
+    variations: []
+    platform: windows
+    uploads: []
+    build_target: null
+    language: null
+  technique_name: Software Discovery
+  additional_info:
+    cleanup: '[]'
+  tactic: discovery
+  requirements: []
+  buckets: []
+  repeatable: false
+  id: 1eabe964-42ad-4696-b76a-2cd3340bb141

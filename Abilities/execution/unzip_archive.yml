@@ -1,0 +1,31 @@
+- repeatable: false
+  description: Powershell code to unzip archive files from temp folder using 7zip
+  name: Unzip archive files
+  delete_payload: true
+  buckets: []
+  singleton: false
+  privilege: ''
+  additional_info:
+    cleanup: '[]'
+  tactic: execution
+  requirements: []
+  plugin: ''
+  technique_id: T1059.001
+  access: {}
+  technique_name: 'Command and Scripting Interpreter: PowerShell'
+  executors:
+  - timeout: 60
+    payloads: []
+    variations: []
+    name: psh
+    code: null
+    platform: windows
+    command: Start-Process -FilePath "C:\Program Files\7-Zip\7z.exe" -ArgumentList
+      "x `"$env:TEMP\Platinum_Rocket.7z`" -o`"$env:TEMP`"" -Wait
+    build_target: null
+    additional_info: {}
+    language: null
+    uploads: []
+    cleanup: []
+    parsers: []
+  id: f569e5f5-a840-4ab9-b34f-af5b23c3b035

